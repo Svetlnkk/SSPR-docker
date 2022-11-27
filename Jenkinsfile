@@ -13,7 +13,7 @@ pipeline {
 
 			steps {
 				sh 'docker build -t timovey/sspr4:latest .'
-				sh 'docker run timovey/sspr4:latest'
+				sh 'docker run -d timovey/sspr4:latest'
 			}
 		}
         stage('Test') {
