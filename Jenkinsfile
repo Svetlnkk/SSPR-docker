@@ -17,7 +17,7 @@ pipeline {
 		}
         stage('Test') {
             steps {
-                sh "dotnet vstest --logger "trx;LogFileName=test_results.trx"  TestService.dll"
+                sh "dotnet vstest TestService.dll"
             }
         }
 
