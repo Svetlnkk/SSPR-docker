@@ -17,7 +17,8 @@ pipeline {
 		}
         stage('Test') {
             steps {
-				sh 'docker run --name "test_sspr" -it timovey/sspr4:latest'
+				sh 'docker run --name "test_sspr" -t -i timovey/sspr4:latest'
+				sh 'docker attach "test_sspr"'
                 sh 'dotnet vstest TestService.dll'
 				sh 'exit 13'
 				sh 'docker stop "test_sspr"'
