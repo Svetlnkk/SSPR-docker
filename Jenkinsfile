@@ -19,7 +19,7 @@ pipeline {
             steps {
 				sh 'docker stop $(docker ps -a -q)'
 				sh 'docker rm $(docker ps -a -q)'
-				sh 'docker run --name "test_sspr" timovey/sspr4:latest dotnet vstest TestService.dll' 
+				sh 'docker run -d --name "test_sspr" timovey/sspr4:latest dotnet vstest TestService.dll' 
 				sh 'exit 13'
 				sh 'docker stop "test_sspr"'
             }
