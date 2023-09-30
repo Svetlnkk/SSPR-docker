@@ -12,36 +12,36 @@ pipeline {
         stage('Build') {
 
 			steps {
-				sh 'docker build -t svetlnk/sspr4:latest .'
+				bat 'docker build -t svetlnk/sspr4:latest .'
 			}
 		}
         stage('Test') {
             steps {
-				sh 'docker stop $(docker ps -a -q)'
-				sh 'docker rm $(docker ps -a -q)'
-				sh 'docker run -d --name "test_sspr" svetlnk/sspr4:latest bash'
-				sh 'docker exec "test_sspr" sh -c "dotnet vstest TestService.dll"'
-				sh 'docker stop "test_sspr"'
+				bat 'docker stop $(docker ps -a -q)'
+				bat 'docker rm $(docker ps -a -q)'
+				bat 'docker run -d --name "test_sspr" svetlnk/sspr4:latest bash'
+				bat 'docker exec "test_sspr" sh -c "dotnet vstest TestService.dll"'
+				bat 'docker stop "test_sspr"'
             }
         }
 
         stage('Login') {
 
 			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
 
 		stage('Push') {
 
 			steps {
-				sh 'docker push svetlnk/sspr4:latest'
+				bat 'docker push svetlnk/sspr4:latest'
 			}
 		}
     }
     post {
 		always {
-			sh 'docker logout'
+			bat 'docker logout'
 		}
 	}
 }
