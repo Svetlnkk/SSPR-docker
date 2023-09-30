@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Cloning Git') {
           steps {
-              git([url: 'https://github.com/Svetlankk/SSPR-docker.git', branch: 'master'])
+              git([url: 'https://github.com/Svetlnkk/SSPR-docker.git', branch: 'master'])
           }
         }
         stage('Build') {
