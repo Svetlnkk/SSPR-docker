@@ -17,8 +17,6 @@ pipeline {
 		}
         stage('Test') {
             steps {
-				bat 'docker stop $(docker ps -q)'
-				bat 'docker rm $(docker ps -q)'
 				bat 'docker run -d --name "test_sspr" svetlnk/sspr4:latest bash'
 				bat 'docker exec "test_sspr" sh -c "dotnet vstest TestService.dll"'
 				bat 'docker stop "test_sspr"'
