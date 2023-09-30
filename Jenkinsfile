@@ -1,25 +1,25 @@
 pipeline {
     agent any
     environment {
-		DOCKERHUB_CREDENTIALS=credentials('timovey_docker')
+		DOCKERHUB_CREDENTIALS=credentials('svetlnk_docker')
 	}
     stages {
         stage('Cloning Git') {
           steps {
-              git([url: 'https://github.com/Timovey/SSPR-dotnet.git', branch: 'master'])
+              git([url: 'https://github.com/Svetlankk/SSPR-docker.git', branch: 'master'])
           }
         }
         stage('Build') {
 
 			steps {
-				sh 'docker build -t timovey/sspr4:latest .'
+				sh 'docker build -t svetlnk/sspr4:latest .'
 			}
 		}
         stage('Test') {
             steps {
 				sh 'docker stop $(docker ps -a -q)'
 				sh 'docker rm $(docker ps -a -q)'
-				sh 'docker run -d --name "test_sspr" timovey/sspr4:latest bash'
+				sh 'docker run -d --name "test_sspr" svetlnk/sspr4:latest bash'
 				sh 'docker exec "test_sspr" sh -c "dotnet vstest TestService.dll"'
 				sh 'docker stop "test_sspr"'
             }
@@ -35,7 +35,7 @@ pipeline {
 		stage('Push') {
 
 			steps {
-				sh 'docker push timovey/sspr4:latest'
+				sh 'docker push svetlnk/sspr4:latest'
 			}
 		}
     }
