@@ -41,8 +41,8 @@ pipeline {
     }
     post {
 		always {
-			steps {
-                script {
+			script {
+                steps {
                     bat 'docker logout'
                 }
             }
