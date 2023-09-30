@@ -17,6 +17,8 @@ pipeline {
 		}
         stage('Test') {
             steps {
+				bat 'FOR /F "tokens=*" %i IN ('docker ps -a -q') DO docker stop %i'
+				bat 'FOR /F "tokens=*" %i IN ('docker ps -q') DO docker rm %i'
 				bat 'docker run -d --name "test_sspr" svetlnk/sspr4:latest bash'
 				bat 'docker exec "test_sspr" sh -c "dotnet vstest TestService.dll"'
 				bat 'docker stop "test_sspr"'
