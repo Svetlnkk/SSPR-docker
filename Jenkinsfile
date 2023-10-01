@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-		DOCKERHUB_CREDENTIALS=credentials('svetlnk')
+		DOCKERHUB_CREDENTIALS=credentials('svetlnk_docker')
 	}
     stages {
         stage('Cloning Git') {
