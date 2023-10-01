@@ -24,14 +24,6 @@ pipeline {
 				bat 'docker stop "test_sspr"'
             }
         }
-		stage('Check Environment Variables') {
-			steps {
-				script {
-					echo "DOCKERHUB_CREDENTIALS_USR: ${env.DOCKERHUB_CREDENTIALS_USR}"
-					echo "DOCKERHUB_CREDENTIALS_PSW: ${env.DOCKERHUB_CREDENTIALS_PSW}"
-				}
-			}
-		}
 
         stage('Login') {
 
