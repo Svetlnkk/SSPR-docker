@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32825.248
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainService.Main", "MainService.Main\MainService.Main.csproj", "{66851617-2BDF-40EB-B7BF-F7E0C8479C4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainService.Main", "MainService.Main\MainService.Main.csproj", "{66851617-2BDF-40EB-B7BF-F7E0C8479C4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestService", "TestService\TestService.csproj", "{21C541FF-1284-4FA0-9824-817CC5426B6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestService", "TestService\TestService.csproj", "{21C541FF-1284-4FA0-9824-817CC5426B6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
