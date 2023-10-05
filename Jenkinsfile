@@ -25,19 +25,14 @@ pipeline {
             }
         }
 
-        stage('Login') {
-
-			steps {
-				bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-
-		stage('Push') {
-
-			steps {
-				bat 'docker push svetlnk/sspr4:latest'
-			}
-		}
+        stage("Push Image To Docker Hub") {
+            steps {
+                withCredentials([string(credentialsId: 'svetlnk-docker', variable: 'svetlnkdocker')]) {
+                    bat "docker login --username svetlnk --password ${svetlnkdocker}"
+                    bat 'docker push svetlnk/sspr4:latest'
+                }
+            }
+        }
     }
     post {
 		always {
